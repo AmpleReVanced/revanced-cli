@@ -289,7 +289,6 @@ internal object PatchCommand : Runnable {
             PatcherConfig(
                 apk,
                 patcherTemporaryFilesPath,
-                aaptBinaryPath?.path,
                 patcherTemporaryFilesPath.absolutePath,
             ),
         ).use { patcher ->

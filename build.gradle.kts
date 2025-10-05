@@ -18,6 +18,18 @@ repositories {
     mavenCentral()
     google()
     maven {
+        url = uri("https://git.naijun.dev/api/packages/revanced/maven")
+
+        credentials<HttpHeaderCredentials>(HttpHeaderCredentials::class.java) {
+            name = "Authorization"
+            value = "token ${project.findProperty("gitea.accessToken") as String? ?: System.getenv("GITEA_TOKEN")}"
+        }
+
+        authentication {
+            register("header", HttpHeaderAuthentication::class.java)
+        }
+    }
+    maven {
         // A repository must be specified for some reason. "registry" is a dummy.
         url = uri("https://maven.pkg.github.com/revanced/registry")
         credentials {
