@@ -33,6 +33,7 @@ repositories {
             password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
         }
     }
+    mavenLocal()
 }
 
 dependencies {
